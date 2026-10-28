@@ -10,8 +10,8 @@ import java.lang.reflect.Type;
 import java.util.*;
 
 public class Generator {
-    private static final int MAX_DEPTH = 10;
-    private static final int MAX_SIZE = 20;
+    public static final int MAX_DEPTH = 10;
+    public static final int MAX_SIZE = 20;
 
     private static final Random random = new Random();
 
@@ -120,7 +120,7 @@ public class Generator {
     }
 
     private Object generateList(Type elementType, int depth) {
-        var size = random.nextInt(MAX_SIZE);
+        var size = 1 + random.nextInt(MAX_SIZE);
         var result = new ArrayList<>();
         for (int i = 0; i < size; i++) {
             result.add(generate(elementType, depth + 1));
@@ -129,7 +129,7 @@ public class Generator {
     }
 
     private Object generateMap(Type keyType, Type valueType, int depth) {
-        var size = random.nextInt(MAX_SIZE);
+        var size = 1 + random.nextInt(MAX_SIZE);
         var result = new HashMap<>();
         for (int i = 0; i < size; i++) {
             result.put(generate(keyType, depth + 1), generate(valueType, depth + 1));
